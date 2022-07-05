@@ -1,7 +1,19 @@
 // C++ code
 //
+class IntervalCode {
+  private:
+      int interval = 500;
 
-private int interval = 1000;
+  public:
+      void setInterval(int val) {
+          interval = val;
+      }
+
+  public:
+      int getInterval() {
+          return interval;
+      }
+};
 
 void setup()
 {
@@ -10,28 +22,23 @@ void setup()
   pinMode(7, OUTPUT);
 }
 
-protected int setInterval(int val) {
-  interval = val;
-}
+int redLight = 2;
+int yellowLight = 4;
+int greenLight = 7;
+IntervalCode interval;
 
-public int getInterval() {
-  return interval;
-}
-
+// IntervalCode::getInterval()
 
 void loop()
 {
-  int redLight = 2;
-  int yellowLight = 4;
-  int greenLight = 7;
-  setInterval(getInterval() - 20);
+  interval.setInterval(interval.getInterval() - 20);
   digitalWrite(greenLight, LOW);
   digitalWrite(redLight, HIGH);
-  delay(interval); // Wait for 1000 millisecond(s)
+  delay(interval.getInterval()); // Wait for 1000 millisecond(s)
   digitalWrite(redLight, LOW);
   digitalWrite(yellowLight, HIGH);
-  delay(interval);
+  delay(interval.getInterval());
   digitalWrite(yellowLight, LOW);
   digitalWrite(greenLight, HIGH);
-  delay(interval);
+  delay(interval.getInterval());
 }
