@@ -1,29 +1,22 @@
-// C++ code
-//
-#include <Servo.h>
+/* 
+ * Doesn't work, refer to the following link
+ * for pin mapping as this one is incorrect.
+ * https://learn.adafruit.com/adafruit-motor-shield-v2-for-arduino
+ */
+int eLeft = 3;
+int mLeft = 12;
+int eRight = 11;
+int mRight = 13;
+int speed = 255;
 
-int servoDegrees = 0;
-
-Servo servo;
-
-void setup()
-{
-  servo.attach(3, 500, 2500);
-  servoDegrees = 0;
-  servo.write(0);
-  Serial.begin(9600);
+void setup() {
+  pinMode(mLeft, OUTPUT);
+  pinMode(mRight, OUTPUT);
 }
 
-void loop()
-{
-  do {
-  servoDegrees += 1;
-  //delay(5);
-  servo.write(servoDegrees);
-  Serial.println(servo.read());
-  } 
-  while (!(servoDegrees == 180));
-  servoDegrees = 0;
-  delay(50);
-  // todo: make it a for loop
-  }
+void loop() {
+  digitalWrite(mLeft, LOW);
+  digitalWrite(mRight, LOW);
+  analogWrite(eLeft, speed);
+  analogWrite(eRight, speed); 
+}
