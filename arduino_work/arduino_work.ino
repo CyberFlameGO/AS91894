@@ -28,10 +28,16 @@ void setup() {
 }
 
 void loop() {
-  /*
-  digitalWrite(mLeft, HIGH);
-  digitalWrite(mRight, HIGH);
-  analogWrite(eLeft, speed);
-  analogWrite(eRight, speed); 
-  */
+  rightMotor->run(FORWARD);
+  leftMotor->run(FORWARD);
+  delay(200);
+  rightMotor->run(RELEASE);
+  leftMotor->run(RELEASE);
+  delay(10);
+  rightMotor->run(BACKWARD);
+  leftMotor->run(BACKWARD);
+  delay(200);
+  rightMotor->run(RELEASE);
+  leftMotor->run(RELEASE);
+  delay(10);
 }
