@@ -8,10 +8,8 @@
  * for pin mapping as this one is incorrect.
  * https://learn.adafruit.com/adafruit-motor-shield-v2-for-arduino
  */
-short eLeft = 3;
-short mLeft = 12;
-short eRight = 11;
-short mRight = 13;
+
+short ir_pin = 3;
 short trigger = 5;
 short echo = 6;
 uint8_t distance;
@@ -37,16 +35,17 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(us.read());
+//  Serial.println(us.read());
+// TODO: Look into using the NEC API for the IRLremote library, so I'm utilising the library and also not having to figure out everything myself.
   rightMotor->run(FORWARD);
   leftMotor->run(FORWARD);
-  delay(100);
+  delay(500);
   rightMotor->run(RELEASE);
   leftMotor->run(RELEASE);
-  delay(10);
+  delay(500);
   rightMotor->run(BACKWARD);
   leftMotor->run(BACKWARD);
-  delay(100);
+  delay(500);
   rightMotor->run(RELEASE);
   leftMotor->run(RELEASE);
   delay(10);
